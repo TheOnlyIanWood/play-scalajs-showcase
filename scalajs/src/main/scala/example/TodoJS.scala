@@ -72,6 +72,9 @@ object TodoJS {
       }
     }
 
+
+
+
     def delete(idOp: Option[Long]) = {
       idOp.map{ id =>
         Ajax.delete(Routes.Todos.delete(id)).map{ r =>
