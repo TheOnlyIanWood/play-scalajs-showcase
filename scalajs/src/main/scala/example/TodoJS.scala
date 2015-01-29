@@ -54,6 +54,7 @@ object TodoJS {
 
     def create(txt: String, done: Boolean = false) = {
       val json = s"""{"txt": "${txt}", "done": ${done}}"""
+
       Ajax.postAsJson(Routes.Todos.create, json).map{ r =>
         tasks() = read[Task](r.responseText) +: tasks()
       }.recover{case e: AjaxException => dom.alert(e.xhr.responseText)}
